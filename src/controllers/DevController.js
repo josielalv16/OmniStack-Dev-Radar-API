@@ -45,7 +45,7 @@ module.exports = {
         const { name, bio, techs } = request.body;
 
         const techsArray = parseStringAsArray(techs);
-        
+
         const update = { name, bio, techs: techsArray };
 
         let dev = await Dev.findOneAndUpdate(github_username, update, {
@@ -54,4 +54,12 @@ module.exports = {
 
         return response.json({ dev });
     },
+
+    async destroy(request, response) {
+        const { github_username } = request.query;
+
+        const dev = await Dev.findOneAndDelete(github_username);
+
+        return response.json({ dev });
+    }
 }
