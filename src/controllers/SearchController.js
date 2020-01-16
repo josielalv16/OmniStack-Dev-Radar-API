@@ -25,10 +25,6 @@ module.exports = {
         return response.json({ devs });
     },
 
-    async update() {
-
-    },
-
     async destroy() {
 
     },

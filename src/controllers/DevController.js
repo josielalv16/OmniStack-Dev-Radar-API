@@ -38,5 +38,20 @@ module.exports = {
             });
         }
         return response.json(dev);
-    }
+    },
+
+    async update(request, response) {
+        const { github_username } = request.query;
+        const { name, bio, techs } = request.body;
+
+        const techsArray = parseStringAsArray(techs);
+        
+        const update = { name, bio, techs: techsArray };
+
+        let dev = await Dev.findOneAndUpdate(github_username, update, {
+            new: true
+        });
+
+        return response.json({ dev });
+    },
 }
