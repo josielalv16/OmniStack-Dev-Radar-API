@@ -48,7 +48,7 @@ module.exports = {
 
         const update = { name, bio, techs: techsArray };
 
-        let dev = await Dev.findOneAndUpdate(github_username, update, {
+        let dev = await Dev.findOneAndUpdate( {github_username}, update, {
             new: true
         });
 
